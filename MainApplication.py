@@ -1,20 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jul 20 17:34:25 2019
 
-@author: dbda
-
-test hindustan times
-
-"""
 import logging
+# Change your own path instead of F:/PROJECT/Deploy2
 import sys
-sys.path.append('F:\PROJECT\Deploy2')
+sys.path.append('F:/PROJECT/Deploy2')
 import pandas as pd
-#from sklearn.model_selection import train_test_split
-#from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, cohen_kappa_score
-#from sklearn.feature_extraction.text import TfidfVectorizer
-#from sklearn.ensemble import RandomForestClassifier
 from textpackage import data_preprocess as pp
 from textpackage import Train_model as tr
 from textpackage import Test_model as ts
@@ -22,8 +11,8 @@ from textpackage import Test_model as ts
 
 modelpath = 'F:/PROJECT/Deploy2/'
 
-logging.info('Started NEW EXECUTION')
-exit =False
+logging.info('*** Started new Execution of the Application')
+exit = False
 while exit!=True:
     try: 
         print("\n\n============News Atricles Classifier================")
@@ -58,9 +47,7 @@ while exit!=True:
                         tr.training(X,y,choiceModel, modelpath)
                 else:
                     continue
-                #X,y = pp.get_data("file:///F:/PROJECT/Final Models/all_source_title_5080.json")
-                
-                #tr.training(X,y,choiceModel, modelpath)
+               
             
         elif choice==2:
             print("*****SELECT MODEL YOU WANT TO TEST WITH******")
@@ -76,7 +63,7 @@ while exit!=True:
                 print("\n**********Sorry.... Incorrect Choice ***********")
                 continue
             else:
-                filepath = pp.select_file()####file path cancel ValueError: Expected object or value
+                filepath = pp.select_file()
                 if filepath != '':
                     data = pp.get_data(filepath)
                     if data == False:
@@ -90,8 +77,8 @@ while exit!=True:
                 
         elif choice==3:
             exit=True
-            logging.info('Finished EXECUTION')
-            print("\n********** Thank You ....Exiting ***********")
+            logging.info('*** Closing the Application')
+            print("\n********** Thank You .... Exiting ***********")
         else:
             print("\n********** Incorrect Choice ***********")
     except Exception as e:
